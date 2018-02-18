@@ -111,7 +111,7 @@ export default class Store {
      * @param action Callback called when count is done
      */
     count (action) {
-        const remaning = this.getLocalStorage().reduce((count, todo) => {
+        const active = this.getLocalStorage().reduce((count, todo) => {
             if (!todo.completed) {
                 count++
             }
@@ -119,7 +119,7 @@ export default class Store {
         }, 0)
 
         if (action) {
-            action(remaning)
+            action(active)
         }
     }
 }
