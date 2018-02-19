@@ -1,4 +1,4 @@
-import { querySelector, $on, $delegate } from "./utils"
+import { getNodeId, querySelector, $on, $delegate } from "./utils"
 
 /**
  * Class that takes a Template and binds events to nodes in the document object.
@@ -26,6 +26,12 @@ export default class View {
         })
     }
 
+    bindRemoveTodo (handler) {
+        $delegate(this.$todoList, '.destroy', 'click', ({ target }) => {
+            handler(getNodeId(target))
+        })
+    }
+
     editTodo (target) {
         const todo = target.parentElement
 
@@ -37,6 +43,14 @@ export default class View {
         input.value = target.innerText
         todo.appendChild(input)
         input.focus()
+    }
+
+    removeTodo (id) {
+        const todoNode = querySelector(`[data-id="${id}"]`)
+
+        if (todoNode) {
+            this.$todoList.removeChild(todoNode)
+        }
     }
 
     clearNewTodo () {

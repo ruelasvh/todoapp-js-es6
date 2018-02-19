@@ -10,19 +10,20 @@ export default class Controller {
         this.view = view
 
         view.bindAddTodo(this.addTodo.bind(this))
+        view.bindRemoveTodo(this.removeTodo.bind(this))
 
 
         this._activeRoute = ''
         this._lastActiveRoute = null
     }
 
-    route(raw) {
+    route (raw) {
         const route = raw.replace(/^#\//, '')
         this._activeRoute = route
         this.renderView()
     }
 
-    addTodo(title) {
+    addTodo (title) {
         this.store.insert(
             Object.assign({}, Todo, {title}), () => {
             this.view.clearNewTodo()
@@ -30,7 +31,14 @@ export default class Controller {
         })
     }
 
-    renderView(force) {
+    removeTodo (id) {
+        this.store.remove({id}, () => {
+            this.renderView()
+            this.view.removeTodo(id)
+        })
+    }
+
+    renderView (force) {
         const route = this._activeRoute
 
         if (force || this._lastActiveRoute !== '' || this._lastActiveRoute !== route) {

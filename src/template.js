@@ -10,9 +10,9 @@ export default class Template {
                 <li data-id="${todo.id}" ${todo.completed ? 'class="completed"' : ''}>
                     <input class="toggle" type="checkbox" ${todo.completed ? 'checked' : ''}>
                     <label>${escape(todo.title)}</label>
-                    <button class="move-up"></button>
-                    <button class="move-down"></button>
-                    <button class="destroy"></button>
+                    <button class="move-up">Move up</button>
+                    <button class="move-down">Move down</button>
+                    <button class="destroy">Delete</button>
                 </li>`}, '')
     }
 
