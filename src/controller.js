@@ -13,6 +13,7 @@ export default class Controller {
         view.bindRemoveTodo(this.removeTodo.bind(this))
         view.bindToggleTodo(this.toggleTodo.bind(this))
         view.bindToggleAll(this.toggleAll.bind(this))
+        view.bindEditTodoSave(this.editTodoSave.bind(this))
 
         this._activeRoute = ''
         this._lastActiveRoute = null
@@ -30,6 +31,16 @@ export default class Controller {
             this.view.clearNewTodo()
             this.renderView(true)
         })
+    }
+
+    editTodoSave (id, title) {
+        if (title.length) {
+            this.store.update({id, title}, () => {
+                this.view.editTodoDone(id, title)
+            })
+        }
+
+        this.renderView(true)
     }
 
     removeTodo (id) {

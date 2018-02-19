@@ -1,5 +1,7 @@
 import { getNodeId, querySelector, $on, $delegate } from "./utils"
 
+const ENTER_KEY = 13
+
 /**
  * Class that takes a Template and binds events to nodes in the document object.
  */
@@ -13,7 +15,7 @@ export default class View {
         this.$toggleAll = querySelector('.toggle-all')
         this.$newTodo = querySelector('.new-todo')
         $delegate(this.$todoList, 'li label', 'dblclick', ({ target }) => {
-            this.editItem(target)
+            this.editTodo(target)
         })
     }
 
@@ -44,17 +46,39 @@ export default class View {
         })
     }
 
-    editTodo (target) {
-        const todo = target.parentElement
+    bindEditTodoSave (handler) {
+        $delegate(this.$todoList, 'li .edit', 'blur', ({ target }) => {
+            if (!target.dataset.iscanceled) {
+                handler(getNodeId(target), target.value.trim())
+            }
+        }, true)
 
-        todo.classList.add('editing')
+        $delegate(this.$todoList, 'li .edit', 'keypress', ({ target, keyCode }) => {
+            if (keyCode === ENTER_KEY) {
+                target.blur()
+            }
+        })
+    }
+
+    editTodo (target) {
+        const todoNode = target.parentElement
 
         const input = document.createElement('input')
         input.className = 'edit'
 
         input.value = target.innerText
-        todo.appendChild(input)
+        while (todoNode.firstChild) {
+            todoNode.removeChild(todoNode.firstChild)
+        }
+        todoNode.appendChild(input)
         input.focus()
+    }
+
+    editTodoDone (id) {
+        const todoNode = querySelector(`[data-id="${id}"`)
+        const input = querySelector('input.edit', todoNode)
+
+        todoNode.removeChild(input)
     }
 
     removeTodo (id) {
