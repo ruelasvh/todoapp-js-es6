@@ -1,4 +1,6 @@
-
+/**
+ * Database that holds app's state
+ */
 export default class Store {
     /**
      * @param identifier This Store's name
@@ -26,7 +28,7 @@ export default class Store {
      * @param query {id: number}|{completed: boolean}|{}
      * @param action Callback called when query is finished
      */
-    find (query, action) {
+    findByRoute (query, action) {
         let key
 
         const todos = this.getLocalStorage().filter(todo => {
@@ -44,7 +46,7 @@ export default class Store {
     }
 
     /**
-     * @param todo Item to update
+     * @param todo Todo to update
      * @param action Callback called when update is complete
      */
 
@@ -71,12 +73,12 @@ export default class Store {
     }
 
     /**
-     * @param todo Item to add
+     * @param todo Todo to add
      * @param action Callback called when insertion is done
      */
     insert (todo, action) {
         const todos = this.getLocalStorage()
-        todos.push(item)
+        todos.push(todo)
         this.setLocalStorage(todos)
 
         if (action) {
@@ -111,15 +113,17 @@ export default class Store {
      * @param action Callback called when count is done
      */
     count (action) {
-        const active = this.getLocalStorage().reduce((count, todo) => {
-            if (!todo.completed) {
-                count++
-            }
-            return count
-        }, 0)
+        const todos = this.getLocalStorage()
+        const total = todos.length
+        let completed = 0
+        let index = total
+
+        while (index--) {
+            completed += todos[index].completed
+        }
 
         if (action) {
-            action(active)
+            action(total, total - completed, completed)
         }
     }
 }

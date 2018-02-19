@@ -17,7 +17,7 @@ body {
     font-weight: 300;
 }
 
-#todo-app {
+.todo-app {
     background: #fff;
     margin: 130px 0 40px 0;
     position: relative;
@@ -25,7 +25,7 @@ body {
     0 25px 50px 0 rgba(0, 0, 0, 0.1);
 }
 
-#todo-app .header {
+.todo-app .header {
     height: 3em;
     line-height: 3em;
     background: lightgray;
@@ -33,7 +33,7 @@ body {
     border: 1px solid black;
 }
 
-#todo-app .header input {
+.todo-app .header input {
     position: relative;
     left: 10%;
 }
@@ -41,7 +41,7 @@ body {
 @media only screen and (max-width: 375px) {
     .desktop {display: none}
     .mobile {display: block}
-    #todo-app {
+    .todo-app {
         margin: 30px 0 40px 0;
     }
 }

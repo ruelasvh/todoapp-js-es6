@@ -1,9 +1,8 @@
 /**
- * State {id: number, completed: boolean, title: string}
+ * State {id: number, title: string, completed: boolean}
  */
-export var Item
-
-/**
- * State Array<Item>
- */
-export var ItemList
+export let Todo = {
+    id: Date.now(),
+    title: '',
+    completed: false
+}
