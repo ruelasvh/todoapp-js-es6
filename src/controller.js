@@ -11,7 +11,8 @@ export default class Controller {
 
         view.bindAddTodo(this.addTodo.bind(this))
         view.bindRemoveTodo(this.removeTodo.bind(this))
-
+        view.bindToggleTodo(this.toggleTodo.bind(this))
+        view.bindToggleAll(this.toggleAll.bind(this))
 
         this._activeRoute = ''
         this._lastActiveRoute = null
@@ -38,11 +39,32 @@ export default class Controller {
         })
     }
 
+    toggleTodo (id, completed) {
+        this.toggleCompleted(id, completed)
+        this.renderView()
+    }
+
+    toggleAll (completed) {
+        this.store.find({completed: !completed}, todos => {
+            for (let {id} of todos) {
+                this.toggleCompleted(id, completed)
+            }
+        })
+
+        this.renderView()
+    }
+
+    toggleCompleted (id, completed) {
+        this.store.update({id, completed}, () => {
+            this.view.setTodoCompleted(id, completed)
+        })
+    }
+
     renderView (force) {
         const route = this._activeRoute
 
         if (force || this._lastActiveRoute !== '' || this._lastActiveRoute !== route) {
-            this.store.findByRoute(routes[route], this.view.showTodos.bind(this.view))
+            this.store.find(routes[route], this.view.showTodos.bind(this.view))
         }
 
         this.store.count((total, active, completed) => {

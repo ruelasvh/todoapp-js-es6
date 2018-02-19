@@ -12,7 +12,7 @@ export default class View {
         this.$main = querySelector('.main')
         this.$toggleAll = querySelector('.toggle-all')
         this.$newTodo = querySelector('.new-todo')
-        $delegate(this.$todoList, 'li label', 'click', ({ target }) => {
+        $delegate(this.$todoList, 'li label', 'dblclick', ({ target }) => {
             this.editItem(target)
         })
     }
@@ -29,6 +29,18 @@ export default class View {
     bindRemoveTodo (handler) {
         $delegate(this.$todoList, '.destroy', 'click', ({ target }) => {
             handler(getNodeId(target))
+        })
+    }
+
+    bindToggleTodo (handler) {
+        $delegate(this.$todoList, '.toggle', 'click', ({ target }) => {
+            handler(getNodeId(target), target.checked)
+        })
+    }
+
+    bindToggleAll (handler) {
+        $on(this.$toggleAll, 'click', ({ target }) => {
+            handler(target.checked)
         })
     }
 
@@ -59,6 +71,17 @@ export default class View {
 
     showTodos (todos) {
         this.$todoList.innerHTML = this.template.todoList(todos)
+    }
+
+    setTodoCompleted (id, completed) {
+        const todoNode = querySelector(`[data-id="${id}"`)
+
+        if (todoNode) {
+            todoNode.className = completed ? 'completed' : ''
+
+            // In case it was toggled from an event and not by clicking the checkbox
+            querySelector('input', todoNode).checked = completed
+        }
     }
 
     setTodosLeft (count) {

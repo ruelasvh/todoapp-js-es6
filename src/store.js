@@ -28,7 +28,7 @@ export default class Store {
      * @param query {id: number}|{completed: boolean}|{}
      * @param action Callback called when query is finished
      */
-    findByRoute (query, action) {
+    find (query, action) {
         let key
 
         const todos = this.getLocalStorage().filter(todo => {
