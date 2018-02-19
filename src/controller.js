@@ -14,6 +14,8 @@ export default class Controller {
         view.bindToggleTodo(this.toggleTodo.bind(this))
         view.bindToggleAll(this.toggleAll.bind(this))
         view.bindEditTodoSave(this.editTodoSave.bind(this))
+        view.bindMoveUpTodo(this.moveUpTodo.bind(this))
+        view.bindMoveDownTodo(this.moveDownTodo.bind(this))
 
         this._activeRoute = ''
         this._lastActiveRoute = null
@@ -27,7 +29,7 @@ export default class Controller {
 
     addTodo (title) {
         this.store.insert(
-            Object.assign({}, Todo, {title}), () => {
+            Object.assign({}, Todo, {id: Date.now(), title}), () => {
             this.view.clearNewTodo()
             this.renderView(true)
         })
@@ -47,6 +49,18 @@ export default class Controller {
         this.store.remove({id}, () => {
             this.renderView()
             this.view.removeTodo(id)
+        })
+    }
+
+    moveUpTodo (id) {
+        this.store.moveUp(id, () => {
+            this.renderView(true)
+        })
+    }
+
+    moveDownTodo (id) {
+        this.store.moveDown(id, () => {
+            this.renderView(true)
         })
     }
 

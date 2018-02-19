@@ -60,6 +60,19 @@ export default class View {
         })
     }
 
+
+    bindMoveUpTodo (handler) {
+        $delegate(this.$todoList, '.move-up', 'click', ({ target }) => {
+            handler(getNodeId(target))
+        })
+    }
+
+    bindMoveDownTodo (handler) {
+        $delegate(this.$todoList, '.move-down', 'click', ({ target }) => {
+            handler(getNodeId(target))
+        })
+    }
+
     editTodo (target) {
         const todoNode = target.parentElement
 

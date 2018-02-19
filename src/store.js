@@ -1,3 +1,5 @@
+import { move } from "./utils";
+
 /**
  * Database that holds app's state
  */
@@ -46,6 +48,20 @@ export default class Store {
     }
 
     /**
+     * @param todo Todo to add
+     * @param action Callback called when insertion is done
+     */
+    insert (todo, action) {
+        const todos = this.getLocalStorage()
+        todos.push(todo)
+        this.setLocalStorage(todos)
+
+        if (action) {
+            action()
+        }
+    }
+
+    /**
      * @param todo Todo to update
      * @param action Callback called when update is complete
      */
@@ -73,20 +89,6 @@ export default class Store {
     }
 
     /**
-     * @param todo Todo to add
-     * @param action Callback called when insertion is done
-     */
-    insert (todo, action) {
-        const todos = this.getLocalStorage()
-        todos.push(todo)
-        this.setLocalStorage(todos)
-
-        if (action) {
-            action()
-        }
-    }
-
-    /**
      * @param query {id: number}|{completed: boolean}|{}
      * @param action Callback called when insertion is done
      */
@@ -106,6 +108,28 @@ export default class Store {
         
         if (action) {
             action(todos)
+        }
+    }
+
+    moveUp (todoId, action) {
+        let todos = this.getLocalStorage()
+        move(todos, todoId, -1)
+
+        this.setLocalStorage(todos)
+
+        if (action) {
+            action()
+        }
+    }
+
+    moveDown (todoId, action) {
+        let todos = this.getLocalStorage()
+        move(todos, todoId, 1)
+
+        this.setLocalStorage(todos)
+
+        if (action) {
+            action()
         }
     }
 

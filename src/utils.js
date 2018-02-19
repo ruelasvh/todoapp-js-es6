@@ -54,3 +54,21 @@ export const $delegate = (target, selector, type, handler, capture) => {
 
     $on(target, type, dispatchEvent, !!capture)
 }
+
+/**
+ * Function which moves a todo in an arbitrary position up or down
+ * @param todoList
+ * @param todoId
+ * @param delta
+ */
+export const move = (todoList, todoId, delta) => {
+    let currIndex = todoList.findIndex(todo => { return todo.id === todoId})
+    let newIndex = currIndex + delta
+    if (newIndex < 0  || newIndex == todoList.length) {
+        // At top or bottom, exit
+        return
+    }
+
+    let indeces = [currIndex, newIndex].sort()
+    todoList.splice(indeces[0], 2, todoList[indeces[1]], todoList[indeces[0]])
+};

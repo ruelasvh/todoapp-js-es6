@@ -38,6 +38,14 @@ body {
     left: 10%;
 }
 
+ul > :first-child > .move-up {
+    display: none;
+}
+
+ul > :last-child > .move-down {
+    display: none;
+}
+
 @media only screen and (max-width: 375px) {
     .desktop {display: none}
     .mobile {display: block}
