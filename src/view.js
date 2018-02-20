@@ -1,6 +1,7 @@
 import { getNodeId, querySelector, $on, $delegate } from "./utils"
 
 const ENTER_KEY = 13
+let _clickTimer = null // For support with mobile double tap
 
 /**
  * Class that takes a Template and binds events to nodes in the document object.
@@ -14,9 +15,6 @@ export default class View {
         this.$main = querySelector('.main')
         this.$toggleAll = querySelector('.toggle-all')
         this.$newTodo = querySelector('.new-todo')
-        $delegate(this.$todoList, 'li label', 'dblclick', ({ target }) => {
-            this.editTodo(target)
-        })
     }
 
     bindAddTodo (handler) {
@@ -43,6 +41,20 @@ export default class View {
     bindToggleAll (handler) {
         $on(this.$toggleAll, 'click', ({ target }) => {
             handler(target.checked)
+        })
+    }
+
+    bindEditTodo (handler) {
+        $delegate(this.$todoList, 'li label', 'click', ({ target }) => {
+            if (_clickTimer == null) {
+                _clickTimer = setTimeout(function () {
+                    _clickTimer = null;
+                }, 500)
+            } else {
+                clearTimeout(_clickTimer);
+                _clickTimer = null;
+                handler(target)
+            }
         })
     }
 

@@ -13,6 +13,7 @@ export default class Controller {
         view.bindRemoveTodo(this.removeTodo.bind(this))
         view.bindToggleTodo(this.toggleTodo.bind(this))
         view.bindToggleAll(this.toggleAll.bind(this))
+        view.bindEditTodo(this.editTodo.bind(this))
         view.bindEditTodoSave(this.editTodoSave.bind(this))
         view.bindMoveUpTodo(this.moveUpTodo.bind(this))
         view.bindMoveDownTodo(this.moveDownTodo.bind(this))
@@ -33,6 +34,10 @@ export default class Controller {
             this.view.clearNewTodo()
             this.renderView(true)
         })
+    }
+
+    editTodo (id) {
+        this.view.editTodo(id)
     }
 
     editTodoSave (id, title) {
