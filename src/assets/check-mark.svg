@@ -1,0 +1,15 @@
+<svg width="61px" height="48px" viewBox="0 0 61 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <polygon id="path-1" points="46.9609375 335.832031 68.2832031 355.970703 98.1699219 317 103.775391 331.582031 68.2832031 364.634766 43 344.96875"></polygon>
+    </defs>
+    <g id="Welcome" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Desktop" transform="translate(-43.000000, -317.000000)">
+            <g id="Rectangle-6-Copy-2">
+                <use fill="#D8D8D8" fill-rule="evenodd" xlink:href="#path-1"></use>
+                <path stroke="#979797" stroke-width="1" d="M47.1360448,336.68518 L43.6129014,344.812036 L68.2540696,363.978658 L103.187526,331.446252 L98.0234908,318.012565 L68.34274,356.714696 L47.1360448,336.68518 Z"></path>
+            </g>
+        </g>
+    </g>
+</svg>

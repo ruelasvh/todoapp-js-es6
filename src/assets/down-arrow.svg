@@ -1,0 +1,17 @@
+<svg width="22px" height="17px" viewBox="0 0 22 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <polygon id="path-1" points="0 26.1621465 0 20.8553013 10.6113281 31.5583892 21.2226562 20.8553013 21.2226562 26.1621465 10.6113281 36.8652344"></polygon>
+    </defs>
+    <g id="Welcome" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Desktop" transform="translate(-62.000000, -432.000000)">
+            <g id="Arrows-Copy-6" transform="translate(62.000000, 412.000000)">
+                <g id="Rectangle-8-Copy">
+                    <use fill="#D8D8D8" fill-rule="evenodd" xlink:href="#path-1"></use>
+                    <path stroke="#979797" stroke-width="1" d="M0.5,25.9562995 L10.6113281,36.1550637 L20.7226562,25.9562995 L20.7226562,22.0697956 L10.6113281,32.2685599 L0.5,22.0697956 L0.5,25.9562995 Z"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

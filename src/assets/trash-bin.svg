@@ -1,0 +1,17 @@
+<svg width="36px" height="36px" viewBox="0 0 36 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Welcome" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Desktop" transform="translate(-55.000000, -496.000000)" stroke-width="2">
+            <g id="Trash-bin-Copy-6" transform="translate(55.000000, 496.000000)">
+                <rect id="Rectangle" stroke="#999999" x="5" y="9" width="26" height="26"></rect>
+                <path d="M10,10 L10,35" id="Line" stroke="#979797" stroke-linecap="square"></path>
+                <rect id="Rectangle-3" stroke="#979797" x="1" y="5" width="34" height="4"></rect>
+                <rect id="Rectangle-4" stroke="#979797" x="15" y="1" width="6" height="3"></rect>
+                <path d="M18,10 L18,35" id="Line-2" stroke="#979797" stroke-linecap="square"></path>
+                <path d="M26,10 L26,35" id="Line-3" stroke="#979797" stroke-linecap="square" transform="translate(26.000000, 22.500000) scale(-1, 1) translate(-26.000000, -22.500000) "></path>
+            </g>
+        </g>
+    </g>
+</svg>

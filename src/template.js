@@ -12,7 +12,7 @@ export default class Template {
                     <label>${escape(todo.title)}</label>
                     <button class="move-up">Move up</button>
                     <button class="move-down">Move down</button>
-                    <button class="destroy">Delete</button>
+                    <div class="destroy"></div>
                 </li>`}, '')
     }
 

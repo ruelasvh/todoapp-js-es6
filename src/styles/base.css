@@ -17,6 +17,10 @@ body {
     font-weight: 300;
 }
 
+:focus {
+    outline: 0;
+}
+
 .todo-app {
     background: #fff;
     margin: 130px 0 40px 0;
@@ -26,16 +30,32 @@ body {
 }
 
 .todo-app .header {
-    height: 3em;
-    line-height: 3em;
+    font-size: 20px;
+    height: 2em;
+    line-height: 2em;
     background: lightgray;
     padding: 5px 5px 5px 20px;
     border: 1px solid black;
 }
 
 .todo-app .header input {
+    font-size: 16px;
+    padding: 6px 10px 6px 10px;
     position: relative;
     left: 10%;
+}
+
+.main {
+    padding-top: 30px;
+    position: relative;
+    z-index: 2;
+    border-top: 1px solid #e6e6e6;
+}
+
+.todo-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
 }
 
 ul > :first-child > .move-up {
@@ -45,6 +65,75 @@ ul > :first-child > .move-up {
 ul > :last-child > .move-down {
     display: none;
 }
+
+.todo-list li {
+    position: relative;
+    height: 2em;
+    font-size: 24px;
+    border-bottom: 1px solid #ededed;
+}
+
+.todo-list li .edit {
+    border: none;
+    font-size: 24px;
+    background: rgba(0, 0, 0, 0.003);
+    box-shadow: inset 0 -2px 1px rgba(0,0,0,0.03);
+}
+
+.todo-list li.completed label {
+    color: #d9d9d9;
+    text-decoration: line-through;
+}
+
+.todo-list li .destroy {
+    background-image: url('../assets/trash-bin.svg');
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 0;
+    right: 10px;
+    bottom: 0;
+    width: 40px;
+    height: 40px;
+    margin: auto 0;
+    font-size: 30px;
+    margin-bottom: 11px;
+}
+
+input[type='checkbox'] {
+    text-align: center;
+    -webkit-appearance:none;
+    width:30px;
+    height:30px;
+    margin: auto 30px;
+    background:white;
+    border:2px solid gray;
+}
+input[type='checkbox']:checked {
+    -webkit-appearance:none;
+    background-image: url('../assets/check-mark.svg');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+.todo-count {
+    float: right;
+    text-align: right;
+    margin-right: 10px;
+}
+
+.todo-count strong {
+    font-weight: 300;
+}
+
+.search {
+    background-image: url('../assets/searchicon.png');
+    background-position: 10px 12px;
+    background-repeat: no-repeat;
+    font-size: 16px;
+    padding: 12px 20px 12px 40px;
+    border: 1px solid #ddd;
+}
+
 
 @media only screen and (max-width: 375px) {
     .desktop {display: none}
