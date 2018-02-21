@@ -1,7 +1,6 @@
 import { getNodeId, querySelector, $on, $delegate } from "./utils"
 
 const ENTER_KEY = 13
-let _clickTimer = null // For support with mobile double tap
 
 /**
  * Class that takes a Template and binds events to nodes in the document object.
@@ -15,6 +14,15 @@ export default class View {
         this.$main = querySelector('.main')
         this.$toggleAll = querySelector('.toggle-all')
         this.$newTodo = querySelector('.new-todo')
+        this.$search = querySelector('.search')
+
+        this._clickTimer = null
+    }
+
+    bindOnSearch (handler) {
+        $on(this.$search, 'keyup', () => {
+            handler()
+        })
     }
 
     bindAddTodo (handler) {
@@ -46,13 +54,13 @@ export default class View {
 
     bindEditTodo (handler) {
         $delegate(this.$todoList, 'li label', 'click', ({ target }) => {
-            if (_clickTimer == null) {
-                _clickTimer = setTimeout(function () {
-                    _clickTimer = null;
+            if (this._clickTimer == null) {
+                this._clickTimer = setTimeout(function () {
+                    this._clickTimer = null;
                 }, 500)
             } else {
-                clearTimeout(_clickTimer);
-                _clickTimer = null;
+                clearTimeout(this._clickTimer);
+                this._clickTimer = null;
                 handler(target)
             }
         })
@@ -83,6 +91,20 @@ export default class View {
         $delegate(this.$todoList, '.move-down', 'click', ({ target }) => {
             handler(getNodeId(target))
         })
+    }
+
+    searchTodos () {
+        let filter, li, label, i
+        filter = this.$search.value.toUpperCase()
+        li = this.$todoList.getElementsByTagName('li')
+        for (i = 0; i < li.length; i++) {
+            label = li[i].getElementsByTagName('label')[0]
+            if (label.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                li[i].style.display = ''
+            } else {
+                li[i].style.display = 'none'
+            }
+        }
     }
 
     editTodo (target) {

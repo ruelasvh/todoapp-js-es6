@@ -17,6 +17,7 @@ export default class Controller {
         view.bindEditTodoSave(this.editTodoSave.bind(this))
         view.bindMoveUpTodo(this.moveUpTodo.bind(this))
         view.bindMoveDownTodo(this.moveDownTodo.bind(this))
+        view.bindOnSearch(this.searchTodos.bind(this))
 
         this._activeRoute = ''
         this._lastActiveRoute = null
@@ -38,6 +39,10 @@ export default class Controller {
 
     editTodo (id) {
         this.view.editTodo(id)
+    }
+
+    searchTodos () {
+        this.view.searchTodos()
     }
 
     editTodoSave (id, title) {
