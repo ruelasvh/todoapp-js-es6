@@ -71,27 +71,25 @@ ul > :last-child > .move-down {
 }
 
 .move-up {
-    width: 30px;
-    height: 30px;
+    width: 15px;
+    height: 15px;
     background-image: url('../assets/up-arrow.svg');
     background-repeat: no-repeat;
     position: absolute;
-    top: 20px;
+    top: 15px;
     right: 10px;
-    bottom: 0;
-    margin: auto 0;
-    padding: 0px 50px 30px 0;
+    padding-right: 50px;
 }
 
 .move-down {
-    width: 30px;
-    height: 30px;
+    width: 15px;
+    height: 15px;
     background-image: url('../assets/down-arrow.svg');
     background-repeat: no-repeat;
     position: absolute;
     right: 10px;
-    bottom: 0;
-    padding: 0px 50px 0px 0;
+    bottom: 15px;
+    padding-right: 50px;
 }
 
 .todo-list li {
@@ -115,6 +113,10 @@ ul > :last-child > .move-down {
     height: 1em;
     width: 90%;
     padding-left: 5%;
+}
+
+.todo-list li:nth-child(even) .edit {
+    background: #f5f5f5;
 }
 
 .todo-list li.completed label {
@@ -151,6 +153,7 @@ input[type='checkbox'] {
 input[type='checkbox']:checked {
     -webkit-appearance:none;
     background-image: url('../assets/check-mark.svg');
+    background-size: 100% 100%;
     background-repeat: no-repeat;
 }
 
@@ -192,10 +195,17 @@ input[type='checkbox']:checked {
         padding: 0;
     }
 
+    .todo-app .header strong {
+        display: none;
+    }
+
     .todo-app .header input {
-        margin: 0 auto;
-        left: 0;
-        padding: 0;
+        margin: 10px auto;
+        left: 1%;
+        padding: 6px;
+        font-size: 20px;
+        width: 60%;
+        display: block;
     }
 
     input[type='checkbox'] {

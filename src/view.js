@@ -166,5 +166,9 @@ export default class View {
     setCompleteAllCheckbox (checked) {
         this.$toggleAll.checked = !!checked
     }
+
+    setSearchBarVisibility (visible) {
+        this.$search.style.display = !!visible ? 'block' : 'none'
+    }
 }
 

@@ -106,6 +106,7 @@ export default class Controller {
             this.view.setTodosLeft(active)
             this.view.setCompleteAllCheckbox(completed === total)
             this.view.setMainVisibility(total)
+            this.view.setSearchBarVisibility(total)
         })
 
         this._lastActiveRoute = route
