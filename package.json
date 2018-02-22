@@ -1,14 +1,14 @@
 {
-  "name": "todo-vaniall-es6",
+  "name": "todoapp-js-es6",
   "version": "1.0.0",
-  "description": "Vanilla ES6 Todo App",
+  "description": "Todo app written in pure JavaScript ES6 transpiled with Babel and bundled with Webpack.",
   "scripts": {
     "start": "webpack-dev-server",
     "build": "NODE_ENV=production webpack --config ./webpack.config.js --progress --colors"
   },
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/ruelasvh/todoapp-js-es6.git"
   },
   "keywords": [
     "javascript-es6",
