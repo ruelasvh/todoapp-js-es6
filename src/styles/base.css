@@ -40,7 +40,7 @@ body {
 
 .todo-app .header input {
     font-size: 16px;
-    padding: 6px 10px 6px 10px;
+    padding: 6px 70px 6px 30px;
     position: relative;
     left: 10%;
     vertical-align: middle;
@@ -56,6 +56,10 @@ body {
     margin: 0;
     padding: 0;
     list-style: none;
+}
+
+li:nth-child(even) {
+    background: #f5f5f5;
 }
 
 ul > :first-child > .move-up {
@@ -92,50 +96,61 @@ ul > :last-child > .move-down {
 
 .todo-list li {
     position: relative;
-    height: 2em;
     font-size: 24px;
     border-bottom: 1px solid #ededed;
     padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.todo-list li label {
+    display: inline-block;
+    width: 60%;
+    padding-left: 15%;
+    vertical-align: middle;
 }
 
 .todo-list li .edit {
     border: none;
-    font-size: 24px;
+    font-size: 20px;
     height: 1em;
-    padding-left: 100px;
+    width: 90%;
+    padding-left: 5%;
 }
 
 .todo-list li.completed label {
     color: #d9d9d9;
     text-decoration: line-through;
+    left: 10px;
+    bottom: 0;
+    padding-left: 15%;
 }
 
 .todo-list li .destroy {
     background-image: url('../assets/trash-bin.svg');
     background-repeat: no-repeat;
+    background-size: 100% 100%;
     position: absolute;
     top: 0;
     right: 10px;
     bottom: 0;
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     margin: auto 0;
-    font-size: 30px;
-    margin-bottom: 11px;
 }
 
 input[type='checkbox'] {
     -webkit-appearance:none;
-    width:30px;
-    height:30px;
+    position: absolute;
+    width: 25px;
+    height: 25px;
     margin: auto 30px;
-    border:2px solid gray;
+    border: 2px solid gray;
     vertical-align: middle;
 }
+
 input[type='checkbox']:checked {
     -webkit-appearance:none;
     background-image: url('../assets/check-mark.svg');
-    background-size: 100% 100%;
     background-repeat: no-repeat;
 }
 
@@ -162,20 +177,44 @@ input[type='checkbox']:checked {
     padding: 12px 20px 12px 40px;
     border: 1px solid #ddd;
     margin: 0 auto;
-    width: 80%;
+    width: 60%;
     display: block;
 }
 
 
 @media only screen and (max-width: 375px) {
-    .desktop {display: none}
-    .mobile {display: block}
     .todo-app {
-        margin: 30px 0 40px 0;
+        margin: 0px 0 40px 0;
     }
-}
 
-@media only screen and (min-width: 374px) {
-    .mobile {display: none}
-    .desktop {display: block}
+    .todo-app .header {
+        height: auto;
+        padding: 0;
+    }
+
+    .todo-app .header input {
+        margin: 0 auto;
+        left: 0;
+        padding: 0;
+    }
+
+    input[type='checkbox'] {
+        margin: auto 10px;
+    }
+
+    .todo-list li {
+        height: auto;
+        padding-bottom: 25px;
+    }
+
+    .todo-list li label {
+        display: inline-block;
+        width: 50%;
+    }
+
+    .todo-list li .edit {
+        display: inline-block;
+        width: 90%;
+        padding-left: 10px;
+    }
 }
