@@ -98,7 +98,7 @@ export default class View {
         filter = this.$search.value.toUpperCase()
         li = this.$todoList.getElementsByTagName('li')
         for (i = 0; i < li.length; i++) {
-            label = li[i].getElementsByTagName('label')[0]
+            label = li[i].getElementsByTagName('span')[0]
             if (label.innerHTML.toUpperCase().indexOf(filter) > -1) {
                 li[i].style.display = ''
             } else {
