@@ -24,7 +24,7 @@ export default class Controller {
     }
 
     route (raw) {
-        const route = raw.replace(/^#\//, '')
+        const route = raw.replace(/^#/, '')
         this._activeRoute = route
         this.renderView()
     }
