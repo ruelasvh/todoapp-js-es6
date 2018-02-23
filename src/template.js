@@ -8,8 +8,9 @@ export default class Template {
         return todos.reduce((todoListHTML, todo) => {
             return todoListHTML + `
                 <li data-id="${todo.id}" ${todo.completed ? 'class="completed"' : ''}>
-                    <input class="toggle" type="checkbox" ${todo.completed ? 'checked' : ''}>
-                    <label>${escape(todo.title)}</label>
+                    <input id="${todo.id}" class="toggle" type="checkbox" ${todo.completed ? 'checked' : ''}>
+                    <label for="${todo.id}"></label>
+                    <span class="title">${escape(todo.title)}</span>
                     <div class="move-up"></div>
                     <div class="move-down"></div>
                     <div class="destroy"></div>

@@ -53,7 +53,7 @@ export default class View {
     }
 
     bindEditTodo (handler) {
-        $delegate(this.$todoList, 'li label', 'click', ({ target }) => {
+        $delegate(this.$todoList, 'li span', 'click', ({ target }) => {
             if (this._clickTimer == null) {
                 this._clickTimer = setTimeout(function () {
                     this._clickTimer = null;
