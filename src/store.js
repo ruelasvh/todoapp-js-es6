@@ -65,7 +65,6 @@ export default class Store {
      * @param todo Todo to update
      * @param action Callback called when update is complete
      */
-
     update (todo, action) {
         const id = todo.id
         const todos = this.getLocalStorage()

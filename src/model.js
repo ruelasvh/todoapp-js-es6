@@ -1,7 +1,7 @@
 /**
  * State {id: number, title: string, completed: boolean}
  */
-export let Todo = {
+export const Todo = {
     id: Date.now(),
     title: '',
     completed: false
